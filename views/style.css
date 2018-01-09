@@ -1,0 +1,17 @@
+input.formmover{
+	top:45%;
+	width: 50%;
+	position: absolute;
+    left:25%;
+}
+
+body{
+    position: fixed;
+}
+
+button.formmover{
+    top:50%;
+    width: 20%;
+    position: absolute;
+    left:40%;
+}

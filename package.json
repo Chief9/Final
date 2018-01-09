@@ -1,7 +1,6 @@
 {
   "name": "filmfeeling",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +8,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "pug": "^2.0.0-rc.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Chief9/final.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Chief9/final/issues"
+  },
+  "homepage": "https://github.com/Chief9/final#readme",
+  "description": ""
 }
