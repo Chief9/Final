@@ -1,3 +1,11 @@
 body{
 	position: fixed;
 }
+
+div.formmover{
+	top: 20%;
+	position: fixed;
+	z-index: 1;
+	text-align: center;
+	color: white;
+}

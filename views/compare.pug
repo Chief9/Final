@@ -9,11 +9,11 @@ html
 			include style.css
 	body
 
-
-		//- -for (var i = 0; i < Things.length; i++) {
-		//- 	Things[i]
-		//- }
-		
+		div.formmover
+			p #{movies.title} / #{movies.original_title}
+			p #{movies.overview}
+			img(src='http://image.tmdb.org/t/p/w185//' + movies.poster_path)
+				
 		div(id="carouselLanding" class="carousel slide" data-ride="carousel")
 			div(class="carousel-inner")
 				div(class="carousel-item active")
@@ -22,7 +22,6 @@ html
 					img(class="d-block w-100 h-100" src="images/bg2.jpg" alt="3d slide")
 				div(class="carousel-item")
 					img(class="d-block w-100 h-100" src="images/bg3.jpg" alt="4th slide")
-				
 
 
 
