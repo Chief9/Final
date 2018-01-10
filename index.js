@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
-
+const MovieDB = require('moviedb')('ef3c702b020d9110c4259e6b862555f7');
 
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(express.static("public"))
@@ -11,11 +11,18 @@ app.set('view engine', 'pug')
 app.post("/Search", (req,results) =>{
 	
 	var word = req.body.name
-	console.log(word)
-	var replaced = word.split(' ').join('%20');
-	console.log(`https://api.themoviedb.org/3/search/movie?api_key=ef3c702b020d9110c4259e6b862555f7&language=en-US&query=${replaced}&page=1&include_adult=false`)
-	results.render("compare")
+/*	var replaced = word.split(' ').join('%20');*/
+	/*console.log(`https://api.themoviedb.org/3/search/movie?api_key=ef3c702b020d9110c4259e6b862555f7&language=en-US&query=${replaced}&page=1&include_adult=false`)*/
+	MovieDB.searchMovie({ query: word, page:"1" }, (err, res) => {
+ 	var movies = res.results
+ 	for (var i = 0; i < 1; i++) {
+ 		console.log(movies[0].original_title)
+
+ 		}
+ 	results.render("compare", {movies:movies})
 	
+})
+
 })
 
 
