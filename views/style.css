@@ -15,3 +15,29 @@ button.formmover{
     position: absolute;
     left:40%;
 }
+
+div.formmover{
+    top:20%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    background: rgba(54, 25, 25, .5);
+}
+button.formmover.back{
+    top:100%;
+    width: 20%;
+    position: absolute;
+    left:28%;
+}
+
+
+
+button.formmover.go{
+    top:100%;
+    width: 20%;
+    position: absolute;
+    left:52%;
+}
+

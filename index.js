@@ -26,16 +26,23 @@ app.post("/Search", (req,results) =>{
  		}
 
  		}
-	
+	console.log(movies1)
  	results.render("compare", {movies:movies1})
 })
 
 })
 
-/*p #{movies.title} / #{movies.original_title}
-p #{movies.overview}
-img(src='http://image.tmdb.org/t/p/w185//' + movies.poster_path)
+app.post("/back", (req,results) =>{
+	results.render("index")
+})
+
+app.post("/go", (req,results) =>{
+/*	var movies = data 
+	console.log(movies)
 */
+	results.render("filter")
+})
+
 
 
 app.get("/", (req,res) => {
