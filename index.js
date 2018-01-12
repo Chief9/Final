@@ -2,9 +2,17 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const MovieDB = require('moviedb')('ef3c702b020d9110c4259e6b862555f7');
+const session = require('express-session')
 
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(express.static("public"))
+
+app.use(session({
+	secret:"secreto",
+	resave: true,
+	saveUninitialized: false
+
+}))
 
 app.set('view engine', 'pug')
 
@@ -16,7 +24,11 @@ app.post("/Search", (req,results) =>{
  	for (var i = 0; i < 1; i++) {
  		if(movies!=0){ 
  		var movies1= movies[0]
+ 		var ssn = req.session
+ 		ssn.movieIDS= movies1.genre_ids
+ 		console.log(ssn.movieIDS)
  		}else{
+ 		
  		var movies1= { 
  			title : 'not found',
  			original_title : 'not found',
@@ -37,10 +49,10 @@ app.post("/back", (req,results) =>{
 })
 
 app.post("/go", (req,results) =>{
-/*	var movies = data 
-	console.log(movies)
-*/
-	results.render("filter")
+
+	console.log(movies1)
+
+/*	results.render("filter")*/
 })
 
 

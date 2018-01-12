@@ -13,7 +13,8 @@ html
 		div.background
 			div.formmover
 				h1 Is this the correct movie?
-				p #{movies.title} / #{movies.original_title}
+				p #{movies.title} / #{movies.original_title} 
+				p (#{movies.release_date})
 				p #{movies.overview}
 				img(src='http://image.tmdb.org/t/p/w185//' + movies.poster_path)
 				form(class="form-group" method="POST" action="back")
@@ -35,20 +36,23 @@ html
 
 
 
-		script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous")
+		script(src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous")
 		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous")
 
-		script.
-			$(document).ready(function(){
-			for (const )
-				var id= #{movies.genre_ids[0]}
-				console.log(id)	
-					$("#continue").click(function(){
-						$.ajax({
-								  url:"/go",
-								  type:"POST",
-								  data:{id:movies.id},
-								})
-					})
-			})
+		//- script.
+		//- 	$(document).ready(function(){
+		//- 		var id= #{movies.genre_ids[0]}
+		//- 		console.log("1st log", id)	
+		//- 			$("#continue").click(function(){
+		//- 				$.ajax({
+		//- 						url:"/filter.pug",
+		//- 						method:"POST",
+		//- 						type:"JSON",
+		//- 						data:{id:"id"},
+		//- 						success:function(data){
+		//- 							console.log("2nd log", data)
+		//- 						}
+		//- 						})
+		//- 			})
+		//- 	})
