@@ -24,9 +24,9 @@ app.post("/Search", (req,results) =>{
  	for (var i = 0; i < 1; i++) {
  		if(movies!=0){ 
  		var movies1= movies[0]
- 		var ssn = req.session
- 		ssn.movieIDS= movies1.genre_ids
- 		console.log(ssn.movieIDS)
+ 	 
+ 		req.session.movieIDS= movies1.genre_ids
+ 		console.log(req.session)
  		}else{
  		
  		var movies1= { 
@@ -50,12 +50,27 @@ app.post("/back", (req,results) =>{
 
 app.post("/go", (req,results) =>{
 
-	console.log(movies1)
+	MovieDB.genreMovies({id:req.body.movieID }, (err, res) => {
+	  console.log("doei",res.results[0].id);
+	  console.log("hoi",res.results.length)
+		  for (var i = 0; i < res.results.length; i++) {
+		  var movieReviewID = res.results[i].id
+		  console.log(movieReviewID)
+		  MovieDB.movieReviews({id:res.results[i].id},  (err, res) => {
+		  var Reviewobjects = res.results[0]
+		  console.log("reviews", movieReviewID[i], Reviewobjects)
+		  })	
+	  }
+})
+/*	MovieDB.genreMovies({id:req.body.movieID, page:"2" }, (err, res) => {
+	  console.log(res);
+	  console.log(req.body.movieID)
 
-/*	results.render("filter")*/
+	})*/
 })
 
-
+//reviews ophalen met loop
+//reviews koppelen aan id
 
 app.get("/", (req,res) => {
 	res.render("index")

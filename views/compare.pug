@@ -21,6 +21,7 @@ html
 					button(type="submit" class="btn btn-light formmover back" value="submit") No
 
 				form(class="form-group" method="POST" action="go")
+					input(type='hidden' name= 'movieID' value=`${movies.genre_ids}`)
 					button(type="submit" class="btn btn-light formmover Go" value="submit" id="continue") Yes!
 
 
