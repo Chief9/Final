@@ -46,20 +46,39 @@ app.post("/back", (req,results) =>{
 })
 
 app.post("/go", (req,results) =>{
-function count(sentence) {
-  var list = sentence.split(' ');
-  var words = {};
-  for (var i = 0; i < list.length; i++) {
-    if (!(words.hasOwnProperty(list[i]))) {
-    	if(words[i] != "the"){
-	      words[list[i]] = 0;
-	    }
-	    ++words[list[i]];
-	}
-}
-  return words;
+	function count(sentence) {
+	  var list = sentence.toLowerCase().split(' ');
+	  var words = {};
+		for (var i = 0; i < list.length; i++) {
 
-}
+	  		if (!(words.hasOwnProperty(list[i])) && ( list[i]!== "the" || list[i]!== "be" || list[i]!== "to" || list[i]!== "of" || list[i]!== "and" || 
+	  			list[i]!== "a" || list[i]!== "in" || list[i]!== "that" || list[i]!== "have" || list[i]!== "i" || 
+	  			list[i]!== "it" || list[i]!== "for" || list[i]!== "not" || list[i]!== "on" || list[i]!== "with" ||
+	  			list[i]!== "he" || list[i]!== "as" || list[i]!== "you" || list[i]!== "do" || list[i]!== "at" ||
+	  			list[i]!== "this" || list[i]!== "but" || list[i]!== "his" || list[i]!== "by" || list[i]!== "from" ||
+	  			list[i]!== "they" || list[i]!== "we" || list[i]!== "say" || list[i]!== "her" || list[i]!== "she" ||
+	  			list[i]!== "or" || list[i]!== "an" || list[i]!== "will" || list[i]!== "my" || list[i]!== "one" ||
+	  			list[i]!== "all" || list[i]!== "would" || list[i]!== "there" || list[i]!== "thier" || list[i]!== "what" ||
+	  			list[i]!== "so" || list[i]!== "up" || list[i]!== "out" || list[i]!== "if" || list[i]!== "about" ||
+	  			list[i]!== "who" || list[i]!== "get" || list[i]!== "which" || list[i]!== "go" || list[i]!== "me" ||
+	  			list[i]!== "when" || list[i]!== "make" || list[i]!== "can" || list[i]!== "like" || list[i]!== "no" ||
+	  			list[i]!== "just" || list[i]!== "him" || list[i]!== "know" || list[i]!== "take" || list[i]!== "into" ||
+	  			list[i]!== "your" || list[i]!== "good" || list[i]!== "some" || list[i]!== "could" || list[i]!== "them" ||
+	  			list[i]!== "see" || list[i]!== "other" || list[i]!== "than" || list[i]!== "then" || list[i]!== "now" || 
+	  			list[i]!== "look" || list[i]!== "only" || list[i]!== "come" || list[i]!== "its" || list[i]!== "over" ||
+	  			list[i]!== "also" || list[i]!== "back" || list[i]!== "after" || list[i]!== "use" || list[i]!== "two" ||
+	  			list[i]!== "how" || list[i]!== "our" || list[i]!== "first" || list[i]!== "even" || list[i]!== "new" ||
+	  			list[i]!== "want" || list[i]!== "because" || list[i]!== "any" || list[i]!== "these" || list[i]!== "give" ||
+	  			list[i]!== "day" || list[i]!== "most" || list[i]!== "us" || typeof list[i]!== 'string' )){
+			    
+			    		words[list[i]] = 0;
+			    }
+				    	++words[list[i]];
+		}
+	  console.log( "inside", words)
+	}
+
+
 	var IDlist = []
 	MovieDB.genreMovies({id:req.body.movieID }, (err, res) => {
 	  console.log("doei",res.results[0].genre_ids[0]);
@@ -77,15 +96,16 @@ function count(sentence) {
 			var Boldreviews = "empty"
 
 			}
-		  console.log(Boldreviews.length)
+			console.log("woorden teller", Boldreviews.length)
 			var display = count(Boldreviews);
-			console.log("function test",display);
+			
+			/*console.log("function test",display);*/
 		  })	
 	  }
 		  /*console.log(movieReviewID)*/
 		  console.log( "final", IDlist) //pushed into array 
 		  // change loop res.results.length en id res.results[i].id
-})
+	})
 /*	MovieDB.genreMovies({id:req.body.movieID, page:"2" }, (err, res) => {
 	  console.log(res);
 	  console.log(req.body.movieID)
