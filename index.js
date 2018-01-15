@@ -46,7 +46,21 @@ app.post("/back", (req,results) =>{
 })
 
 app.post("/go", (req,results) =>{
-	var IDlist = [] 
+function count(sentence) {
+  var list = sentence.split(' ');
+  var words = {};
+  for (var i = 0; i < list.length; i++) {
+    if (!(words.hasOwnProperty(list[i]))) {
+    	if(words[i] != "the"){
+	      words[list[i]] = 0;
+	    }
+	    ++words[list[i]];
+	}
+}
+  return words;
+
+}
+	var IDlist = []
 	MovieDB.genreMovies({id:req.body.movieID }, (err, res) => {
 	  console.log("doei",res.results[0].genre_ids[0]);
 	  /*console.log("hoi",res.results.length) 20*/ 
@@ -63,7 +77,9 @@ app.post("/go", (req,results) =>{
 			var Boldreviews = "empty"
 
 			}
-		  console.log(Boldreviews)
+		  console.log(Boldreviews.length)
+			var display = count(Boldreviews);
+			console.log("function test",display);
 		  })	
 	  }
 		  /*console.log(movieReviewID)*/
