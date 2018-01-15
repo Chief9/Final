@@ -24,9 +24,7 @@ app.post("/Search", (req,results) =>{
  	for (var i = 0; i < 1; i++) {
  		if(movies!=0){ 
  		var movies1= movies[0]
- 	 
- 		req.session.movieIDS= movies1.genre_ids
- 		console.log(req.session)
+ 		console.log(movies1)
  		}else{
  		
  		var movies1= { 
@@ -38,8 +36,7 @@ app.post("/Search", (req,results) =>{
  		}
 
  		}
-	console.log(movies1)
- 	results.render("compare", {movies:movies1})
+	results.render("compare", {movies:movies1})
 })
 
 })
@@ -49,18 +46,29 @@ app.post("/back", (req,results) =>{
 })
 
 app.post("/go", (req,results) =>{
-
+	var IDlist = [] 
 	MovieDB.genreMovies({id:req.body.movieID }, (err, res) => {
-	  console.log("doei",res.results[0].id);
-	  console.log("hoi",res.results.length)
+	  console.log("doei",res.results[0].genre_ids[0]);
+	  /*console.log("hoi",res.results.length) 20*/ 
 		  for (var i = 0; i < res.results.length; i++) {
 		  var movieReviewID = res.results[i].id
-		  console.log(movieReviewID)
+		  IDlist.push(movieReviewID)
+
 		  MovieDB.movieReviews({id:res.results[i].id},  (err, res) => {
-		  var Reviewobjects = res.results[0]
-		  console.log("reviews", movieReviewID[i], Reviewobjects)
+		  var Reviewobjects = res.results
+		  if(res.results != 0){
+		  	
+		  	var Boldreviews = Reviewobjects[0].content 
+			}else{
+			var Boldreviews = "empty"
+
+			}
+		  console.log(Boldreviews)
 		  })	
 	  }
+		  /*console.log(movieReviewID)*/
+		  console.log( "final", IDlist) //pushed into array 
+		  // change loop res.results.length en id res.results[i].id
 })
 /*	MovieDB.genreMovies({id:req.body.movieID, page:"2" }, (err, res) => {
 	  console.log(res);
