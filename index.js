@@ -47,37 +47,53 @@ app.post("/back", (req,results) =>{
 
 app.post("/go", (req,results) =>{
 	MovieDB.genreMovies({id:req.body.movieID }, (err, res) => {
-		 IDlist = [] //list of movie ids
-		 displaylist= [] // all reviews should go here so they can be counted
-		 Boldreviews= "" // the reviews of all movies without indication for word counting
+		var IDlist = [] //list of movie ids
+		var displaylist= [] // all reviews should go here so they can be counted
+		var Boldreviews= "" // the reviews of all movies without indication for word counting
 		 /*console.log("doei",res.results[0].genre_ids[0]);*/
-		for (var i = 0; i < res.results.length; i++) {
-		  var movieReviewID = res.results[i].id
-		  IDlist.push(movieReviewID)
+		let movieDbCallsArray = []
+		for(var i = 0; i < res.results.length; i++) {
 
-		  MovieDB.movieReviews({id:res.results[i].id},  (err, res) => {
-		  var Reviewobjects = res.results
-		  if(res.results != 0){
-		  	
-		  	var Boldreviews = Reviewobjects[0].content 
-			var display = count(Boldreviews)
-			
-			}else{
-			var Boldreviews = "empty"
+			movieDbCallsArray.push(movieDbReviewPromise(res.results[i].id))
+		}
+		Promise.all(movieDbCallsArray).then((allTheResults)=> {
+		var display = allTheResults.toString()
+		var counter = count(display)
+		
 
-			}
-			displaylist.push(Boldreviews)
-			/*console.log("woorden teller", Boldreviews.length)*/
-			/*console.log("displaylist", displaylist)*/
-			})	
-			console.log("listlength", displaylist)
-	  }
-		console.log("Boldreviews",Boldreviews)
+
+		console.log(counter)
+
+
+
+
+		}	
+
+		})
+		.catch((e)=> {
+			throw e
+		})
+		
+		function movieDbReviewPromise(id) {
+
+	    return new Promise(function(resolve, reject) {
+                MovieDB.movieReviews({ id: id }, (err, res) => {
+                    if (err) reject(err)
+                    if (res.results != 0) {
+                        resolve(res.results[0].content)
+                    } else {
+                        resolve("")
+                    }
+                })
+            })
+		}
+
+		/*console.log("Boldreviews",Boldreviews)*/
+		/*console.log( "final", IDlist) */
+	  })
 		/*console.log("display", display)*/
-		console.log( "final", IDlist) 
 
-	}) ///scope probleem oplossen>> woorden samenvoegen en woorden met ids koppelen
-	function count(sentence) {
+		function count(sentence) {
 		var list = sentence.replace(/[^a-zA-Z ]/g, "").toLowerCase().split(' ')
 	 	var words = []
 	 	for (var i = 0; i < list.length; i++) {
