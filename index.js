@@ -67,8 +67,6 @@ app.post("/go", (req,results) =>{
 
 
 
-		}	
-
 		})
 		.catch((e)=> {
 			throw e
