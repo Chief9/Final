@@ -41,3 +41,22 @@ button.formmover.go{
     left:52%;
 }
 
+button.btn.btn-light.formmover.rigtB{
+    left: 20%
+}
+
+button.btn.btn-light.formmover.leftB{
+    left:60%;
+
+}
+
+h1 {
+    position: absolute;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    left: 24%;
+    top: 44%;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}

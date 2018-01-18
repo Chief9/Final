@@ -24,9 +24,7 @@ app.post("/Search", (req, results) => {
         for (var i = 0; i < 1; i++) {
             if (movies != 0) {
                 var movies1 = movies[0]
-                console.log(movies1)
-            } else {
-
+                } else {
                 var movies1 = {
                     title: 'not found',
                     original_title: 'not found',
@@ -62,7 +60,7 @@ app.post("/go", (req, results) => {
                 }
                 var display = count(comments)
                 var wordspliiter = comments.split(' ')
-                console.log(display)
+                
                 var sortable = [];
                     for (var words in display) {
                         sortable.push([words, display[words]]);
@@ -71,8 +69,8 @@ app.post("/go", (req, results) => {
                     sortable.sort(function(a, b) {
                         return b[1] - a[1];
                     });
-                    console.log(movieDbCallsArray )
-            /*results.render("filter", {comments:comments})*/
+                    console.log(res.results[0].poster_path)
+            results.render("filter", {comments:comments, sortable:sortable, display:display, all:res.results})
             })
             .catch((e) => {
                 throw e
