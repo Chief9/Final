@@ -60,3 +60,20 @@ h1 {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
+
+.poster{
+    display: inline-block;
+    float: center;
+    position: fixed;
+    width: 100%;
+}
+
+div.poster{
+    position: fixed;
+    top:60%;
+}
+
+.poster img{
+    height: 10%;
+    width: 10%;
+}

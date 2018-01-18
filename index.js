@@ -59,8 +59,6 @@ app.post("/go", (req, results) => {
 
                 }
                 var display = count(comments)
-                var wordspliiter = comments.split(' ')
-                
                 var sortable = [];
                     for (var words in display) {
                         sortable.push([words, display[words]]);
@@ -69,8 +67,8 @@ app.post("/go", (req, results) => {
                     sortable.sort(function(a, b) {
                         return b[1] - a[1];
                     });
-                    console.log(res.results[0].poster_path)
-            results.render("filter", {comments:comments, sortable:sortable, display:display, all:res.results})
+                    console.log("backend",commentsID[0][1])
+            results.render("filter", {sortable:sortable, display:display, all:res.results, commentsID:commentsID})
             })
             .catch((e) => {
                 throw e
@@ -94,7 +92,8 @@ app.post("/go", (req, results) => {
             var list = sentence.replace(/[^a-zA-Z ]/g, "").toLowerCase().split(' ')
             var words = {}
             for (var i = 0; i < list.length; i++) {
-                if (!(words.hasOwnProperty(list[i])) && list[i] !== "the"  && !(words.hasOwnProperty(list[i])) && list[i]!=="and" &&
+                if (
+                !(words.hasOwnProperty(list[i])) && list[i] !== "the"  && !(words.hasOwnProperty(list[i])) && list[i]!=="and" &&
                 !(words.hasOwnProperty(list[i]))&& list[i]!=="a" && !(words.hasOwnProperty(list[i])) && list[i]!=="that" &&
                 !(words.hasOwnProperty(list[i]))&& list[i]!=="i" && !(words.hasOwnProperty(list[i])) && list[i]!=="it" &&
                 !(words.hasOwnProperty(list[i]))&& list[i]!=="not" && !(words.hasOwnProperty(list[i])) && list[i]!=="he" &&
@@ -169,7 +168,6 @@ app.post("/go", (req, results) => {
     })
 
 })
-
 
 
 //reviews ophalen met loop
