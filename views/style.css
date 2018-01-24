@@ -1,23 +1,25 @@
-input.formmover{
-	top:45%;
-	width: 50%;
-	position: absolute;
-    left:25%;
+input.formmover {
+    top: 45%;
+    width: 50%;
+    position: absolute;
+    left: 25%;
 }
 
-body{
+body {
     position: fixed;
+
 }
 
-button.formmover{
-    top:50%;
+button.formmover {
+    top: 50%;
     width: 20%;
     position: absolute;
-    left:40%;
+    left: 40%;
+    z-index: 2;
 }
 
-div.formmover{
-    top:20%;
+div.formmover {
+    top: 20%;
     position: absolute;
     width: 100%;
     z-index: 1;
@@ -25,30 +27,76 @@ div.formmover{
     text-align: center;
     background: rgba(54, 25, 25, .5);
 }
-button.formmover.back{
-    top:100%;
+
+button.formmover.back {
+    top: 100%;
     width: 20%;
     position: absolute;
-    left:28%;
+    left: 52%;
+    z-index: 2;
 }
 
 
 
-button.formmover.go{
-    top:100%;
+button.formmover.go {
+    top: 100%;
     width: 20%;
     position: absolute;
-    left:52%;
+    left: 28%;
+    z-index: 2;
 }
 
-button.btn.btn-light.formmover.rigtB{
-    left: 60%
+button.btn.btn-light.formmover.rigtB {
+    left: 60%;
+    position: absolute;
+    z-index: 2;
+    top:40%;
 }
 
-button.btn.btn-light.formmover.leftB{
-    left:20%;
-
+button.btn.btn-light.formmover.leftB {
+    left: 20%;
+    z-index: 2;
+    position: absolute;
+    top:40%;
 }
+
+h3.suggest {
+    position: fixed;
+    z-index: 1;
+    color: white;
+    font-size: 65px;
+    top: 57%;
+    left: 25%;
+}
+
+h1.suggest1 {
+    position: fixed;
+    z-index: 1;
+    color: white;
+    font-size: 65px;
+    top: 32%;
+    left: 27%;
+}
+
+h1.filmfeeling {
+    text-align: center;
+    position: fixed;
+    font-size: 200px;
+    top: 2%;
+    left: 23%;
+}
+h1.correct {
+    position: absolute;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    left: 39%;
+    top: -13%;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+
 
 h1 {
     position: absolute;
@@ -61,19 +109,19 @@ h1 {
     -webkit-text-stroke-color: black;
 }
 
-.poster{
+.poster {
     display: inline-block;
     float: center;
     position: fixed;
     width: 100%;
 }
 
-div.poster{
+div.poster {
     position: fixed;
-    top:60%;
+    top: 75%;
 }
 
-.poster img{
-    height: 10%;
-    width: 10%;
+.poster img {
+    height: 5%;
+    width: 5%;
 }
